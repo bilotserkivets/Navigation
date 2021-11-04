@@ -21,8 +21,16 @@ class FirstFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
         binding.btnNextFrag1.setOnClickListener {
-            (activity as MainActivity).navController.navigate(R.id.action_firstFragment_to_secondFragment)
+
+            // Передаємо повідомлення на Fragment 2
+            val bundle = Bundle()
+            bundle.putString("key1", "Hello fragment2 i am fragment 1")
+
+            //По кліку на кнопку переміуємось на Fragment 2
+            (activity as MainActivity).navController
+                .navigate(R.id.action_firstFragment_to_secondFragment, bundle)
         }
 
     }

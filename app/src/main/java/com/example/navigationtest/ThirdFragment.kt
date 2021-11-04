@@ -21,6 +21,11 @@ class ThirdFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
+        //Отримуємо повідомлення з Fragment 2
+        binding.messageFrag3.text = arguments?.getString("key2")
+
+        //По кліку на кнопку переміуємось на Fragment 2
         binding.btnBackFrag3.setOnClickListener {
             (activity as MainActivity).navController.navigate(R.id.action_thirdFragment_to_secondFragment)
         }

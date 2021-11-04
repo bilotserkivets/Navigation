@@ -21,12 +21,25 @@ class SecondFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
+        //Отримуємо повідомлення з Fragment 1
+        binding.messageFrag2.text = arguments?.getString("key1")
+
+        //По кліку на кнопку переміуємось на Fragment 1
         binding.btnBackFrag2.setOnClickListener {
             (activity as MainActivity).navController.navigate(R.id.action_secondFragment_to_firstFragment)
         }
 
+
         binding.btnNextFrag2.setOnClickListener {
-            (activity as MainActivity).navController.navigate(R.id.action_secondFragment_to_thirdFragment)
+
+            // Передаємо повідомлення на Fragment 2
+            var bundle = Bundle()
+            bundle.putString("key2", "Hello fragment3 i am fragment 2")
+
+            //По кліку на кнопку переміуємось на Fragment 1
+            (activity as MainActivity).navController
+                .navigate(R.id.action_secondFragment_to_thirdFragment, bundle)
         }
     }
     companion object {
